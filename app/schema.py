@@ -31,14 +31,16 @@ class GetAdvResponse(BaseModel):
     id: int
     heading: str
     description: str
+    price: int
     date_of_creation: datetime.datetime
-    user_id: int
+    user: str
 
 
 class CreateAdvRequest(BaseModel):
     heading: str
     description: str
-    user_id: int
+    price: int
+    user: str
 
 
 class CreateAdvResponse(BaseModel):
@@ -49,6 +51,7 @@ class CreateAdvResponse(BaseModel):
 class UpdateAdvRequest(BaseModel):
     heading: str | None = None
     description: str | None = None
+    price: int | None = None
 
 
 class UpdateAdvResponse(CreateAdvResponse):

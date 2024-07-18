@@ -48,11 +48,12 @@ class Advertisement(Base):
     id = mapped_column(Integer, primary_key=True)
     heading = mapped_column(String(20), nullable=False)
     description = mapped_column(Text)
+    price = mapped_column(Integer)
     date_of_creation = mapped_column(
         DateTime,
         server_default=func.now()
     )
-    user_id = mapped_column(Integer)
+    user = mapped_column(String(20))
 
 
 
@@ -63,6 +64,7 @@ class Advertisement(Base):
             "id": self.id,
             "heading": self.heading,
             "description": self.description,
+            "price": self.price,
             "date_of_creation": self.date_of_creation.isoformat(),
-            "user_id": self.user_id,
+            "user": self.user,
         }

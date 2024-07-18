@@ -4,7 +4,8 @@ import requests
 #                          json={
 #                              "heading": "adv 1",
 #                              "description": "jhgfc",
-#                               'user_id': 1
+#                                "price": "15",
+#                               'user': "user1"
 #                          })
 # print(response.json())
 # print(response.status_code)
@@ -15,12 +16,16 @@ import requests
 # print(response.json())
 # print(response.status_code)
 
-response = requests.delete('http://127.0.0.1:8000/v1/adv/1/',)
-print(response.json())
-print(response.status_code)
-
-
-response = requests.get('http://127.0.0.1:8000/v1/adv/1/',)
+# response = requests.delete('http://127.0.0.1:8000/v1/adv/1/',)
+# print(response.json())
+# print(response.status_code)
+#
+#
+# response = requests.get('http://127.0.0.1:8000/v1/adv/1/',)
+# print(response.json())
+# print(response.status_code)
+#
+response = requests.get('http://127.0.0.1:8000/v1/adv?param1=1',)
 print(response.json())
 print(response.status_code)
 

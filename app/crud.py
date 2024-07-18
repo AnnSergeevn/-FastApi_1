@@ -23,3 +23,12 @@ async def get_item(session: Session, orm_cls: typing.Type[Advertisement], item_i
             detail=f'{orm_cls.__name__} not found'
         )
     return orm_obj
+
+# async def get_item_qs(session: Session, orm_cls: typing.Type[Advertisement], param1: str):
+#     orm_obj = await session.get(orm_cls, param1)
+#     if orm_obj is None:
+#         raise HTTPException(
+#             status_code=404,
+#             detail=f'{orm_cls.__name__} not found'
+#         )
+#     return orm_obj

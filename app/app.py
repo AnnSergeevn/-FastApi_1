@@ -6,6 +6,7 @@ import schema
 from lifespan import lifespan
 from depencies import SessionDependency
 from crud import add_item, get_item
+from typing import Optional
 
 app = fastapi.FastAPI(
     title="Todo API",
@@ -56,10 +57,16 @@ async def get_adv(session: SessionDependency, adv_id: int):
     return adv.dict
 
 
+@app.get("/v1/adv/")
+async def read_root(param1: Optional[str] = None):
+    url = f'http://127.0.0.1:8000/v1/adv/{param1}'
+    return {'url': str(url), "param1": str(param1)}
+
+
 @app.post('/v1/adv/', response_model=schema.CreateAdvResponse,
           summary="Create new todo item")
 async def create_adv(
-        adv_json: schema.CreateAdvRequest, session: SessionDependency):
+        adv_json: schema.CreateAdvRequest,  session: SessionDependency):
     adv = Advertisement(**adv_json.dict())
     adv = await add_item(session, adv)
     return {'id': adv.id}
